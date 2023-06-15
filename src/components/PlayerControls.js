@@ -1,18 +1,22 @@
-import React from 'react';
+import React from 'react'; 
 
-const PlayerControls = () => {
+const PlayerControls = (props) => {
 	return(
 		<div className="c-player--controls">
-			<button className="skip-btn">
+			<button className="skip-btn" onClick={() => props.SkipSong(false)}>
 				<i class="fa-solid fa-backward"></i>
 			</button>
 
-			<button className="play-btn">
-				<i class="fa-solid fa-play"></i>
+			<button className="play-btn" 
+			onClick={() =>
+			 props.setIsPlaying(!props.isPlaying)}>
+			 {props.isPlaying ? <i className="fa-solid fa-pause"></i>
+				: <i className="fa-solid fa-play"></i> }
+				
 			</button>
 
-			<button className="skip-btn">
-				<i class="fa-solid fa-forward"></i>
+			<button className="skip-btn" onClick={()=>props.SkipSong()}>
+			<i class="fa-solid fa-forward"></i>
 			</button>
 
 

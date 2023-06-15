@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Player from "./components/Player";
 
 
 const App = () => {
- const [songList, setSongList] = useState(
+ const [songList] = useState(
   [
     {
   id: 0,
-  title: "Badilika",
+  title: "Nviiri The Storyteller - Badilika Ft Bien",
   artist: "Nviiri",
   image: "/assests/images/nviiri.JPG",
-  src: "/assests/mp3/Badilika.mp3",
+  src: "/assests/mp3/Nviiri The Storyteller - Badilika Ft Bien.mp3",
     
 },
 
 {
   id: 1,
-  title: "Bwana Sherehe",
+  title: "Nviiri The Storyteller - Bwana Sherehe",
   artist: "Nviiri",
   image: "/assests/images/nviiri.jpg",
-  src: "/assests/mp3/Bwana-Sherehe.mp3",
+  src: "/assests/mp3/Nviiri The Storyteller - Bwana Sherehe.mp3",
     
 
 },
 
 {
   id: 2,
-  title: "Simi",
-  artist: "Smile for me",
+  title: "Smile for me",
+  artist: "Simi",
   image: "/assests/images/Simi-Stranger.jpg",
-  src: "/assests/mp3/Bwana-Smile-For-Me.mp3",
+  src: "/assests/mp3/Simi - Smile For Me.mp3",
     
 
 },
@@ -39,27 +39,27 @@ const App = () => {
   title: "Stranger",
   artist: "Simi",
   image: "/assests/images/Simi-Stranger.jpg",
-  src: "/assests/mp3/Stranger.mp3",
+  src: "/assests/mp3/Simi - Stranger.mp3",
   
 
 },
 
 {
   id: 4,
-  title: "Jibebe",
+  title: "Jibebe Ft Diamond Platnumz X Lava Lava X Mbosso",
   artist: "Diamond",
   image: "/assests/images/wcb.jpg",
-  src: "/assests/mp3/Jibebe.mp3"
+  src: "/assests/mp3/WCB Wasafi - Jibebe Ft Diamond Platnumz X Lava Lava X Mbosso.mp3"
   
 
 },
 
 {
   id: 5,
-  title: "Nani Remix",
+  title: "Nani (Remix) Ft Innoss'B",
   artist: "Zuchu",
   image: "/assests/images/zuchu.jpeg",
-  src: "/assests/mp3/Nani-Remix.mp3",
+  src: "/assests/mp3/Zuchu - Nani (Remix) Ft Innoss'B.mp3",
   
 
 },
@@ -70,14 +70,28 @@ const App = () => {
 
 ]);
   
- const [currentSongIndex, setCurrentSong]= useState(0);
- const [nextSongIndex, setnextSong]= useState(currentSongIndex + 1);
+ const [currentSongIndex, setCurrentSongIndex]= useState(0);
+ const [nextSongIndex, setNextSongIndex]= useState(currentSongIndex + 1);
+
+ useEffect(() => {
+  setNextSongIndex(() => {
+    if (currentSongIndex + 1 > songList.length - 1){
+      return 0;
+    } else {
+      return currentSongIndex + 1;
+    }
+  })
+ }, [currentSongIndex]);
+
   return(
 
     <div className="App">
-    <Player song={songList[currentSongIndex]}
-     nextSong={songList[nextSongIndex]}/>
-     
+    <Player currentSongIndex={currentSongIndex}
+            setCurrentSongIndex={setCurrentSongIndex} 
+            nextSongIndex={nextSongIndex}
+            songList={songList}
+            />
+
       
     </div>
             
