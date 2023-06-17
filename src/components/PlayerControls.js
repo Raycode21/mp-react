@@ -4,7 +4,7 @@ const PlayerControls = (props) => {
 	return(
 		<div className="c-player--controls">
 			<button className="skip-btn" onClick={() => props.SkipSong(false)}>
-				<i class="fa-solid fa-backward"></i>
+				<i className="fa-solid fa-backward"></i>
 			</button>
 
 			<button className="play-btn" 
@@ -16,7 +16,7 @@ const PlayerControls = (props) => {
 			</button>
 
 			<button className="skip-btn" onClick={()=>props.SkipSong()}>
-			<i class="fa-solid fa-forward"></i>
+			<i className="fa-solid fa-forward"></i>
 			</button>
 
 
